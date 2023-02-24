@@ -12,11 +12,13 @@ import FilmDetails from './components/films/FilmDetails';
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchContainer, setSearchContainer] = useState("");
+
+  const alert = useAlert()
   const dispatch = useDispatch();
   const { loading, films, error } = useSelector((state) => state.films);
   useEffect(() => {
     if (error) {
-      alert(error);
+      alert.error(error);
     }
     if (searchContainer) {
       dispatch(filmAction(searchContainer));
