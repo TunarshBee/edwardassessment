@@ -16,7 +16,7 @@ function App() {
   const { loading, films, error } = useSelector((state) => state.films);
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      alert(error);
     }
     if (searchContainer) {
       dispatch(filmAction(searchContainer));
@@ -32,18 +32,22 @@ function App() {
     dispatch(filmAction(searchContainer));
   };
   return (
-    <>
+    <div className="App container container-fluid">
       <Nav
         handleChange={handleChange}
         searchTerm={searchTerm}
         handleClick={handleClick}
       />
-      <Routes className="App">
+      <Routes >
         <Route path="/" element={<Home films={films} />} exact />
-        <Route path="/film/details/:id" element={<FilmDetails films={films} />} exact />
+        <Route
+          path="/film/details/:id"
+          element={<FilmDetails films={films} />}
+          exact
+        />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

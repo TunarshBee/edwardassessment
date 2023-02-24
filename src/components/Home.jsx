@@ -1,11 +1,7 @@
 import Footer from "./layouts/Footer";
-import Nav from "./layouts/Nav";
-
-
 import Films from "./films/Films";
 
 const Home = ({films}) => {
-  // const alert = useAlert();
   
   return (
     <div className="container-fluid pt-2">

@@ -10,3 +10,12 @@ export const getFilmsRequest = async (searchTerm) => {
     },
   });
 };
+
+export const getFilmDetails = async (searchTerm) => {
+  return await axiosInstance("/", {
+    params: {
+      apiKey,
+      i: searchTerm,
+    },
+  });
+};
