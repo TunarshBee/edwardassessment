@@ -2,11 +2,20 @@ import Footer from "./layouts/Footer";
 import Nav from "./layouts/Nav";
 
 
-const Home = () => {
+import Films from "./films/Films";
+
+const Home = ({films}) => {
+  // const alert = useAlert();
   
   return (
     <div className="container-fluid pt-2">
-      <Nav />
+      
+      {films &&
+        films.map((film) => (
+          <ul className="d-flex" key={film.imdbID}>
+            <Films film={film} />
+          </ul>
+        ))}
       <Footer />
     </div>
   );

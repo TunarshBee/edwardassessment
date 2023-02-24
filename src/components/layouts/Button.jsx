@@ -4,7 +4,7 @@ const Button = ({ text, handleClick }) => {
   return (
     <button
       onClick={handleClick}
-      className="bg-warning px-3 py-2 rounded mx-2 text-light"
+      className="bg-dark px-3 py-2 rounded mx-2 text-light"
     >
       {text}
     </button>
