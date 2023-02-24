@@ -1,14 +1,19 @@
+import React from 'react';
 import Button from './Button'
 
-const Search = () => {
-  
-
+const Search = ({ handleChange, handleClick, searchTerm }) => {
   return (
-    <div className='d-flex'>
-        <input type="password" value={searchTerm} onChange={handleChange} class="form-control" id="pwd"/>
-        <Button text="Search"/>
+    <div className="d-flex">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleChange}
+        className="form-control"
+        id="txt"
+      />
+      <Button text="Search" handleClick={handleClick} />
     </div>
-  )
-}
+  );
+};
 
-export default Search
+export default React.memo(Search)

@@ -1,4 +1,3 @@
-;
 import Footer from "./layouts/Footer";
 import Nav from "./layouts/Nav";
 

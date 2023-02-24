@@ -8,7 +8,7 @@ export const filmReducer = (state = {films:[]}, action) =>{
         case 'SEARCH_TERM_SUCCESS':
             return{
                 loading: false,
-                films: action.payload.films
+                films: action.payload.Search
             }
         case 'SEARCH_TERM_FAIL':
             return{

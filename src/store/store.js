@@ -7,12 +7,13 @@ const reducer = combineReducers({
       films: filmReducer
 })
 let initialState = {};
-const middleWare = [thunk]
+
+const middlewares = [thunk];
+
 const store = createStore(
   reducer,
   initialState,
-  combineReducers,
-  composeWithDevTools(applyMiddleware(...middleWare))
+  composeWithDevTools(applyMiddleware(...middlewares))
 );
 
-export default store
+export default store;
