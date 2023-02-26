@@ -5,6 +5,7 @@ import { filmDetailsAction } from "../../actions/filmAction";
 import Loader from "../layouts/Loader";
 import { useAlert } from 'react-alert';
 import { Link } from "react-router-dom";
+import MeteData from "../layouts/MetaData";
 
 const FilmDetails = () => {
   const params = useParams();
@@ -25,6 +26,7 @@ const FilmDetails = () => {
         <Loader />
       ) : (
         <>
+        <MeteData title='Film Detail' />
           {film && (
             <div className="d-flex mx-5 my-3 flex-column align-items-center">
               <Link
