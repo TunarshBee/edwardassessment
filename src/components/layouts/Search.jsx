@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from './Button'
 
 const Search = ({ handleChange, handleClick, searchTerm }) => {
@@ -11,9 +10,10 @@ const Search = ({ handleChange, handleClick, searchTerm }) => {
         className="form-control"
         id="txt"
       />
+      
       <Button text="Search" handleClick={handleClick} />
     </div>
   );
 };
 
-export default React.memo(Search)
+export default Search

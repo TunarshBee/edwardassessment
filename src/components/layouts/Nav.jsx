@@ -2,7 +2,7 @@ import Search from "./Search";
 
 const Nav = ({ handleChange, searchTerm, handleClick }) => {
   return (
-    <div className="bg-primary rounded d-flex justify-content-around align-items-center">
+    <div className="bg-primary mx-2 position-fixed fixed-top w-100 rounded d-flex justify-content-around align-items-center mb-5">
       <h3 className="text-center pt-2 pb-2 text-light d-inline ">
         {" "}
         Get movie details from OMDB website{" "}
