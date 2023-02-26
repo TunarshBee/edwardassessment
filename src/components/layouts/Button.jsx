@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { stateContext } from "../../App";
 import { Link } from 'react-router-dom';
 
 const Button = ({ text, handleClick }) => {
+  const states = useContext(stateContext);
   return (
     <Link
       to="/"
-      onClick={handleClick}
+      onClick={states.handleClick}
       className="bg-dark px-3 py-2 rounded mx-2 text-light text-decoration-none"
     >
       {text}
@@ -13,4 +15,4 @@ const Button = ({ text, handleClick }) => {
   );
 };
 
-export default Button
+export default React.memo(Button)

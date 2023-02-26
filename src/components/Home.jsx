@@ -1,27 +1,29 @@
+import React,{ useContext } from "react";
 import { useSelector } from "react-redux";
+import { stateContext } from "../App";
 import Films from "./films/Films";
 import Loader from "./layouts/Loader";
 import Nav from "./layouts/Nav";
+import SearchesHistory from "./SearchesHistory";
 
-const Home = ({ films, handleChange, searchTerm, handleClick }) => {
-  const { loading, film } = useSelector((state) => state.films);
+const Home = () => {
+  const { loading } = useSelector((state) => state.films);
+  const states = useContext(stateContext)
+  console.log(states)
   return (
     <div className="container-fluid pt-2">
-      <Nav
-        handleChange={handleChange}
-        searchTerm={searchTerm}
-        handleClick={handleClick}
-      />
+      <Nav />
+      <SearchesHistory/>
       {loading ? (
         <Loader />
       ) : (
-        <ul className="d-flex flex-column mt-5">
-          {films &&
-            films.map((film) => <Films film={film} key={film.imdbID} />)}
+        <ul className="d-flex flex-column mt-2">
+          {states.films &&
+            states.films.map((film) => <Films film={film} key={film.imdbID} />)}
         </ul>
       )}
     </div>
   );
 };
 
-export default Home;
+export default React.memo(Home);

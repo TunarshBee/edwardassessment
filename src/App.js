@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { filmAction } from "./actions/filmAction";
@@ -8,7 +8,11 @@ import Footer from "./components/layouts/Footer";
 import { Navigate, Route, Routes } from "react-router";
 import FilmDetails from "./components/films/FilmDetails";
 
+export const stateContext = createContext();
 function App() {
+  const alert = useAlert();
+  const dispatch = useDispatch();
+  const { films, error } = useSelector((state) => state.films);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchContainer, setSearchContainer] = useState("");
   const [containers, setcontainers] = useState(() => {
@@ -19,9 +23,6 @@ function App() {
     localStorage.setItem("items", JSON.stringify(containers));
   }, [containers]);
 
-  const alert = useAlert();
-  const dispatch = useDispatch();
-  const { films, error } = useSelector((state) => state.films);
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -34,45 +35,50 @@ function App() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log(event);
+    setSearchTerm(event.target.innerText);
+  };
   const handleClick = (event) => {
     event.preventDefault();
     setSearchContainer(searchTerm);
     if (searchTerm) {
       if (containers.length > 4) {
-        containers.splice(0, 1)
+        containers.splice(0, 1);
         setcontainers([...containers, searchTerm]);
       }
       setcontainers([...containers, searchTerm]);
     }
-    
+
     dispatch(filmAction(searchContainer));
+    setSearchTerm('');
+
   };
-  
+  const providerValues = {
+    containers,
+    searchTerm,
+    films,
+    searchContainer,
+    handleClick,
+    handleChange,
+    handleSearch,
+  };
+
   return (
-    <div className="App">
+    <stateContext.Provider value={providerValues}>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              films={films}
-              handleChange={handleChange}
-              searchTerm={searchTerm}
-              handleClick={handleClick}
-            />
-          }
-          exact
-        />
+        <Route path="/home" element={<Home />} exact />
         <Route
           path="/film/details/:id"
           element={<FilmDetails films={films} />}
           exact
         />
-        <Route path="/" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
       <Footer />
-    </div>
+    </stateContext.Provider>
   );
 }
 
-export default App;
+export default React.memo(App);

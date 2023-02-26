@@ -1,19 +1,23 @@
+import React,{ useContext  } from 'react';
 import Button from './Button'
+import { stateContext } from '../../App';
 
 const Search = ({ handleChange, handleClick, searchTerm }) => {
+  const states = useContext(stateContext)
+
   return (
     <div className="d-flex">
       <input
         type="text"
-        value={searchTerm}
-        onChange={handleChange}
+        value={states.searchTerm}
+        onChange={states.handleChange}
         className="form-control"
         id="txt"
       />
       
-      <Button text="Search" handleClick={handleClick} />
+      <Button text="Search"  />
     </div>
   );
 };
 
-export default Search
+export default React.memo(Search)

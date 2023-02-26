@@ -3,8 +3,8 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { filmDetailsAction } from "../../actions/filmAction";
 import Loader from "../layouts/Loader";
-import Button from "../layouts/Button";
 import { useAlert } from 'react-alert';
+import { Link } from "react-router-dom";
 
 const FilmDetails = () => {
   const params = useParams();
@@ -26,13 +26,19 @@ const FilmDetails = () => {
       ) : (
         <>
           {film && (
-            <>
-            <Button text='Go Back'/>
+            <div className="d-flex mx-5 my-3 flex-column align-items-center">
+              <Link
+                to="/home"
+                className="bg-dark px-3 py-2 rounded mx-2 text-light
+              text-decoration-none"
+              >
+                Go Back
+              </Link>
               <div className="row f-flex justify-content-between">
                 <div className="col-12 col-lg-5 img-fluid" id="film_image">
                   <img
                     src={film.Poster}
-                    className="mt-5 pt-lg-5 position-lg-fixed"
+                    className="mt-3 pt-lg-5 position-lg-fixed"
                     alt="sdf"
                     height="500"
                     width="500"
@@ -116,7 +122,7 @@ const FilmDetails = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </>
       )}
