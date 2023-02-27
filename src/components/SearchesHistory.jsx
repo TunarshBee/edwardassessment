@@ -4,7 +4,7 @@ import { stateContext } from '../App';
 
 const SearchesHistory = () => {
     const { containers, handleSearch } = useContext(stateContext);
-    console.log(containers[0])
+
   return (
     <div className="mt-3 mt-lg-5 pt-5">
       {containers.map((container, ind) => (

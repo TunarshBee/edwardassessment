@@ -10,7 +10,7 @@ import SearchesHistory from "./SearchesHistory";
 const Home = () => {
   const { loading } = useSelector((state) => state.films);
   const states = useContext(stateContext);
-  console.log(states);
+  
   return (
     <div className="container-fluid pt-2">
       <Nav />

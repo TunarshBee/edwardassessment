@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { stateContext } from "../../App";
 import { Link } from 'react-router-dom';
 
-const Button = ({ text, handleClick }) => {
+const Button = ({ text }) => {
   const states = useContext(stateContext);
   return (
     <Link

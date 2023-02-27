@@ -10,16 +10,16 @@ import MeteData from "../layouts/MetaData";
 const FilmDetails = () => {
   const params = useParams();
   const dispatch = useDispatch();
-  const alert = useAlert()
+  // const alert = useAlert()
   const { loading, error, film } = useSelector((state) => state.filmDetails);
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      alert(error);
     }
     if (film) {
       dispatch(filmDetailsAction(params.id));
     }
-  }, [dispatch, params.id, error, alert]);
+  }, [dispatch, params.id, error]);
   return (
     <>
       {loading ? (
