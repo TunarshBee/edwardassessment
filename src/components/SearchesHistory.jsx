@@ -20,6 +20,7 @@ const SearchesHistory = () => {
             onClick={handleSearch}
             style={{ cursor: "pointer", border: "1px solid black" }}
             className="rounded px-2"
+            data-testid='searchHistory'
           >
             {container}
           </li>

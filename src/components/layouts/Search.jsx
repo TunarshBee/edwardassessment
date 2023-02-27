@@ -2,7 +2,7 @@ import React,{ useContext  } from 'react';
 import Button from './Button'
 import { stateContext } from '../../App';
 
-const Search = ({ handleChange, handleClick, searchTerm }) => {
+const Search = () => {
   const states = useContext(stateContext)
 
   return (
@@ -15,9 +15,9 @@ const Search = ({ handleChange, handleClick, searchTerm }) => {
         id="txt"
       />
       
-      <Button text="Search"  />
+      <Button text="Search" data-testid='search'  />
     </div>
   );
 };
 
-export default React.memo(Search)
+export default Search
