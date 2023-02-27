@@ -10,15 +10,23 @@ import SearchesHistory from "./SearchesHistory";
 const Home = () => {
   const { loading } = useSelector((state) => state.films);
   const states = useContext(stateContext);
-  
-  return (
-    <div className="container-fluid pt-2">
-      <Nav />
-      <SearchesHistory />
-      {loading ? (
-        <Loader />
-      ) : (
+  let component = null;
+  if (loading) {
+    component = (
+      <>
+        <Nav />
+        <SearchesHistory />
+        <Loader />;
+      </>
+    );
+
+    return component;
+  } else if (!loading && states.films) {
+    {
+      component = (
         <>
+          <Nav />
+          <SearchesHistory />
           <MeteData title="Jean Edward Assessment" />
           <ul className="d-flex flex-column mt-2">
             {states.films &&
@@ -27,7 +35,15 @@ const Home = () => {
               ))}
           </ul>
         </>
-      )}
+      );
+      return component;
+    }
+  } 
+  return (
+    <div className="container-fluid pt-2">
+      <Nav />
+      <SearchesHistory />
+      <h2 className="text-center text-danger" >Can not find the search term. Please try again later</h2>;
     </div>
   );
 };
