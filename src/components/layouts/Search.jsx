@@ -12,10 +12,12 @@ const Search = () => {
         value={states.searchTerm}
         onChange={states.handleChange}
         className="form-control"
+        placeholder="search a movie"
         id="txt"
+        data-testid="txt"
       />
-      
-      <Button text="Search" data-testid='search'  />
+
+      <Button text="Search" data-testid="search" />
     </div>
   );
 };
