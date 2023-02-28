@@ -9,6 +9,7 @@ const Button = ({ text }) => {
       to="/"
       onClick={handleClick}
       className="bg-dark px-3 py-2 rounded mx-2 text-light text-decoration-none"
+      data-testid='button'
     >
       {text}
     </Link>
