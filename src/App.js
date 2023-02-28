@@ -18,7 +18,6 @@ function App() {
   const [containers, setcontainers] = useState(() => {
     return JSON.parse(localStorage.getItem("items")) || [];
   });
-  // const [Searches, setSearches] = useState([...containers]);
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(containers));
   }, [containers]);
