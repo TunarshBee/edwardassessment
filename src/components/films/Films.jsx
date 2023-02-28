@@ -9,6 +9,7 @@ const Films = ({ film }) => {
           alt={film.Title}
           className=" rounded"
           style={{ width: "10%", height: "100px", marginRight: "2%" }}
+          data-testid='film-poster'
         />
         <h3>
           {film.Title} ({film.Year})

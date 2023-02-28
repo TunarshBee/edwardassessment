@@ -38,14 +38,17 @@ const Home = () => {
       );
       return component;
     }
-  } 
-  return (
-    <div className="container-fluid pt-2">
-      <Nav />
-      <SearchesHistory />
-      <h2 className="text-center text-danger" >Can not find the search term. Please try again later</h2>;
-    </div>
-  );
+  }else if (!loading === false && !states.films){
+    return (
+      <div className="container-fluid pt-2">
+        <Nav />
+        <SearchesHistory />
+        <h2 className="text-center text-danger">
+          Can not find the search term. Please try again later
+        </h2>
+        ;
+      </div>
+    )}
 };
 
 export default React.memo(Home);

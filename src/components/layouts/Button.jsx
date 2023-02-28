@@ -3,11 +3,11 @@ import { stateContext } from "../../App";
 import { Link } from 'react-router-dom';
 
 const Button = ({ text }) => {
-  const states = useContext(stateContext);
+  const { handleClick } = useContext(stateContext);
   return (
     <Link
       to="/"
-      onClick={states.handleClick}
+      onClick={handleClick}
       className="bg-dark px-3 py-2 rounded mx-2 text-light text-decoration-none"
     >
       {text}

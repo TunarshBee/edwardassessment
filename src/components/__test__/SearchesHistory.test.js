@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import SearchesHistory from "../searchesHistory";
 import { stateContext } from "../../App";
 
@@ -17,14 +17,14 @@ const MockedComponent = () => (
 );
 
 describe("should have the search History", () => {
-  it("should display the search history items", async () => {
+  it("should display one of the search history items", async () => {
     render(<MockedComponent />);
     
     const listElement = await screen.findByText("live");
     expect(listElement).toBeInTheDocument();
   });
 
-  it("should display the search history items", async () => {
+  it("should display all the search history items", async () => {
     render(<MockedComponent />);
     const listElements = await screen.findAllByTestId("searchHistory");
     expect(listElements.length).toBe(3);

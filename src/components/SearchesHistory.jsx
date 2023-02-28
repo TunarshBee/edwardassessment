@@ -9,6 +9,7 @@ const SearchesHistory = () => {
     <div className="mt-3 mt-lg-5 pt-5">
       {containers.map((container, ind) => (
         <ul
+        key={ind}
           style={{
             display: "inline-flex",
             flexDirection: "row",
@@ -16,7 +17,6 @@ const SearchesHistory = () => {
           }}
         >
           <li
-            key={ind}
             data-testid='searchHistory'
             onClick={handleSearch}
             style={{ cursor: "pointer", border: "1px solid black" }}
